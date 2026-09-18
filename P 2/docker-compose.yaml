@@ -1,0 +1,23 @@
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      # sebelum buat folder "nginx"
+      # - ./stkp_volumes/nginx:/usr/share/nginx/html:ro
+      
+      # sesudah buat folder "nginx"
+      - ./nginx:/usr/share/nginx/html:ro
+    networks:
+      - stkp_network
+
+  # Kalo mau nambah image
+  # mysql:
+  #   image: image:...
+  #   container: database
+  
+networks: 
+   stkp_network:
+    driver: bridge
