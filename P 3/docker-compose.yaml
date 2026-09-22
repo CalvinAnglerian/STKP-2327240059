@@ -1,0 +1,20 @@
+services:
+  server1:
+    build: .
+    command: python -u app.py server1
+
+  server2:
+    build: .
+    command: python -u app.py server2
+
+  server3:
+    build: .
+    command: python -u app.py server3
+
+  client:
+    build: .
+    command: python -u app.py client
+    depends_on:
+      - server1
+      - server2
+      - server3
