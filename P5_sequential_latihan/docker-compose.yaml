@@ -1,0 +1,5 @@
+services:
+  sequential:
+    build: .
+    container_name: sequential-python
+    cpus: 1.0
