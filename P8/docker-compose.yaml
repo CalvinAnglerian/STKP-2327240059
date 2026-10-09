@@ -1,0 +1,20 @@
+# Pertemuan 8 : Process vs Threads
+
+services:
+  python:
+    image: python:3.12-slim
+    container_name: python
+    volumes:
+      - ./python:/app
+    tty: true
+    networks:
+      - docker_network
+
+networks:
+  docker_network:
+    driver: bridge
+
+# dalam container
+#1 docker exec -it nama_container bash
+
+#2 pip install psutil : library untuk 
