@@ -9,6 +9,9 @@ for i in range(5):
     waktu_sekarang = time.strftime('%H:%M:%S', time.localtime()) # mendapatkan waktu sekarang
     print(f"[{waktu_sekarang} | PID: {pid} | Core: {core_id}] Loop[ ke-{i} - Selesai menghitung beban!]")
 
+
+
+
 # dalam container
 #1 docker exec -it nama_container bash (cara masuknya)
 # C:\Users\user602\Documents\GitHub\STKP-2327240059>docker exec -it python  bash

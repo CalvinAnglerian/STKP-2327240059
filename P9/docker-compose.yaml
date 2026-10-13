@@ -1,0 +1,21 @@
+# Pertemuan 9 :
+
+services:
+  python:
+    image: python:3.12-slim
+    container_name: python
+    volumes:
+      - ./python:/app
+    tty: true
+    networks:
+      - docker_network
+
+networks:
+  docker_network:
+    driver: bridge
+
+# Folder python akan terbuat sendiri jika menjalankan ini
+# C:\Users\user602\Documents\GitHub\STKP-2327240059\P9>"docker compose up -d python"
+
+# Hapus container 
+# docker rm -f python
