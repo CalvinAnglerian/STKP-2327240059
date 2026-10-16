@@ -28,5 +28,5 @@ t2.join()
 t3.join()
 t4.join()
 
-# ini P9 ada di dalam folder python
+# ini P9 ada di dalam folder python --pny dosen
 # D:\iis\stkp> docker compose exec -it python python3 app/p9/semaphore.py
