@@ -30,3 +30,6 @@ t4.join()
 
 # ini P9 ada di dalam folder python --pny dosen
 # D:\iis\stkp> docker compose exec -it python python3 app/p9/semaphore.py
+
+# versi saya:
+# C:\Users\User\Documents\GitHub\STKP-2327240059\P9> docker compose exec -it python python3 app/semaphore.py

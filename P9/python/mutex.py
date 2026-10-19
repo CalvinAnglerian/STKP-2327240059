@@ -27,4 +27,4 @@ t1.join()
 t2.join()
 
 print("Harapan :", 2000)
-print("Hasil   :", counter, "<- salah karena race condition")
+print("Hasil   :", counter, "<-  Akurat karena Mutual Exclusion")
