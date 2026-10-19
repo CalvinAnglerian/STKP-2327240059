@@ -109,8 +109,8 @@ if __name__ == "__main__":
 # Tugas B 4*4 = 16 core 2 pid 101 //bukan cuma print, tapi benar-benar 2 core yang kerjain
 # Hasil 30
 
-jenis-jenis: 
-concurrent multi-core
+# jenis-jenis: 
+# concurrent multi-core
 
 
-parallel 
+# parallel 
