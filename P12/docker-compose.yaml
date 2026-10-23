@@ -1,0 +1,96 @@
+# Materi 10 (msk uts)
+# Materi 2-8 (Komputasi Paralel)
+# Materi 9-11 (Sistem Terdistribusi)
+
+services:
+#   # DISTRIBUTED MUTEX -Materi 11
+#   app3:
+#     image: python:3.12-slim
+#     container_name: app3
+#     hostname: app3
+#     volumes:
+#       - ./python:/app
+#     tty: true
+#     networks:
+#       - docker_network
+#   app2:
+#     image: python:3.12-slim
+#     container_name: app2
+#     hostname: app2
+#     volumes:
+#       - ./python:/app
+#     tty: true
+#     networks:
+#       - docker_network
+#   app1:
+#     image: python:3.12-slim
+#     container_name: app1
+#     hostname: app1
+#     volumes:
+#       - ./python:/app
+#     tty: true
+#     networks:
+#       - docker_network
+
+  # DISTRIBUTED SYSTEM ARCHITECTURE & CLOCK SYNCRONIZATION - Materi 10
+  presentation:
+    image: python:3.12-slim
+    container_name: presentation
+    volumes:
+      - ./python:/app
+    tty: true
+    environment:
+      - OFFSET=15
+      - ROLE=slave
+    networks:
+      - docker_network
+  application:
+    image: python:3.12-slim
+    container_name: application
+    volumes:
+      - ./python:/app
+    tty: true
+    environment:
+      - OFFSET=10
+      - ROLE=slave
+    networks:
+      - docker_network
+  database:
+    image: python:3.12-slim
+    container_name: database
+    volumes:
+      - ./python:/app
+    tty: true
+    environment:
+      - OFFSET=-5
+      - ROLE=master
+    networks:
+      - docker_network
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: nginx
+  #   ports:
+  #     - "8080:80"
+  #   volumes:
+  #     - ./stkp_volume/nginx:/usr/share/nginx/html:ro
+  #   networks:
+  #     - docker_network
+  # mysql:
+  #   image: mariadb:10.11
+  #   container_name: mysql
+  #   environment:
+  #     MARIADB_ROOT_PASSWORD: secretsecret
+  #     MARIADB_USER: admin
+  #     MARIADB_PASSWORD: secretsecret
+  #   volumes:
+  #     - mysql_data:/var/lib/mysql
+  #   networks:
+  #     - docker_network
+  #   tty: true
+    
+networks:
+  docker_network:
+    driver: bridge
+
+volumes:
+  mysql_data:

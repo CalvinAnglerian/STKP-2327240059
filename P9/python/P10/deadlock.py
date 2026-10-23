@@ -1,3 +1,4 @@
+# Materi 7
 
 import threading
 import time
@@ -60,7 +61,6 @@ def transfer_dana_2():
     lock_b.release()
 
     print("Thread 2: Transfer selesai, kunci dilepaskan.")
-
 
 # Membuat dua thread
 t1 = threading.Thread(target=transfer_dana_1)
