@@ -1,0 +1,101 @@
+# MATERI 11 
+services:
+  # DISTRIBUTED MUTEX -- MATERI 11
+  app3:
+    image: python:3.12-slim
+    container_name: app3
+    hostname: app3
+    volumes:
+      - ./python:/app
+    tty: true
+    networks:
+      - docker_network
+  app2:
+    image: python:3.12-slim
+    container_name: app2
+    hostname: app2
+    volumes:
+      - ./python:/app
+    tty: true
+    networks:
+      - docker_network
+  app1:
+    image: python:3.12-slim
+    container_name: app1
+    hostname: app1
+    volumes:
+      - ./python:/app
+    tty: true
+    networks:
+      - docker_network
+  # DISTRIBUTED SYSTEM ARCHITECTURE & CLOCK SYNCRONIZATION -- MATERI 10
+  presentation:
+    image: python:3.12-slim
+    container_name: presentation
+    volumes:
+      - ./python:/app
+    tty: true
+    environment:
+      - OFFSET=15
+      - ROLE=slave
+    networks:
+      - docker_network
+  application:
+    image: python:3.12-slim
+    container_name: application
+    volumes:
+      - ./python:/app
+    tty: true
+    environment:
+      - OFFSET=10
+      - ROLE=slave
+    networks:
+      - docker_network
+  database:
+    image: python:3.12-slim
+    container_name: database
+    volumes:
+      - ./python:/app
+    tty: true
+    environment:
+      - OFFSET=-5
+      - ROLE=master
+    networks:
+      - docker_network
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./stkp_volume/nginx:/usr/share/nginx/html:ro
+    networks:
+      - docker_network
+  mysql:
+    image: mariadb:10.11
+    container_name: mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: secretsecret
+      MARIADB_USER: admin
+      MARIADB_PASSWORD: secretsecret
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - docker_network
+    tty: true
+    
+networks:
+  docker_network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+
+# 1 tier = 1 node (server, database, client, application, presentation jadi 1 node), 1 container 
+# 2 tier = 2 node (database, server dlm 1 node), (client, presentation dlm 1 node), 2 container
+# 3 tier = 3 node (database 1 node), (application 1 node), (presentation 1 node), 3 container
+# 1 node itu hierarki bukan 1 pc, didalamnya bisa saja ada banyak pc
+
+# kalo ada soal tier dari dosen, sesuaikan brp containernya
+
+# Materi 10 : clock syncronization untuk mengurutkan kejadian proses
