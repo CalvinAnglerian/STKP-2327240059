@@ -128,3 +128,13 @@ services:
     networks:
       - docker_network
     tty: true
+
+# catatan cap theorem:
+# docker exec -it peer1 python3 app/p13/app.py
+# # peer2 normal
+# docker exec -it peer2 python3 app/p13/app.py
+# # peer2 dikondisikan partition network
+# docker exec -it peer2 python3 app/p13/app.py --partition
+
+# docker exec -it peer1 python3 app/p13/client.py "SET nama Andi"
+# docker exec -it peer2 python3 app/p13/client.py "GET nama"
