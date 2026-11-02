@@ -94,3 +94,9 @@ networks:
 
 volumes:
   mysql_data:
+
+# catatan
+# docker compose run -d database application presentation
+# docker exec -it database python3 app/p10/database.py
+# docker exec -it application python3 app/p10/application.py
+# docker exec -it presentation python3 app/p10/presentation.py
