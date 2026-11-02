@@ -91,6 +91,17 @@ networks:
 volumes:
   mysql_data:
 
+# catatan
+# docker compose run -d database app1 app2 app3 presentation
+
+# docker exec -it database python3 app/p11/database.py
+
+# docker exec -it app1 python3 app/p11/application.py
+# docker exec -it app2 python3 app/p11/application.py
+# docker exec -it app3 python3 app/p11/application.py
+
+# docker exec -it presentation python3 app/p11/simulate.py
+
 # 1 tier = 1 node (server, database, client, application, presentation jadi 1 node), 1 container 
 # 2 tier = 2 node (database, server dlm 1 node), (client, presentation dlm 1 node), 2 container
 # 3 tier = 3 node (database 1 node), (application 1 node), (presentation 1 node), 3 container
