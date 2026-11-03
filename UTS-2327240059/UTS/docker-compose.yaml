@@ -1,0 +1,51 @@
+services:
+  database:
+    image: python:3.12-slim
+    container_name: airport_database
+    hostname: database
+    working_dir: /app
+    command: python -u database_server.py
+    volumes:
+      - ./app:/app
+      - airport_db_data:/data
+    expose:
+      - "9001"
+    networks:
+      - airport_net
+
+  application:
+    image: python:3.12-slim
+    container_name: airport_application
+    hostname: application
+    working_dir: /app
+    command: python -u application_server.py
+    volumes:
+      - ./app:/app
+    expose:
+      - "8000"
+    ports:
+      - "8000:8000"
+    networks:
+      - airport_net
+    depends_on:
+      - database
+
+  presentation:
+    image: python:3.12-slim
+    container_name: airport_presentation
+    hostname: presentation
+    working_dir: /app
+    command: tail -f /dev/null
+    volumes:
+      - ./app:/app
+    networks:
+      - airport_net
+    depends_on:
+      - application
+
+networks:
+  airport_net:
+    driver: bridge
+
+volumes:
+  airport_db_data:
