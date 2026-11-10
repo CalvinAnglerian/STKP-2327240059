@@ -1,0 +1,17 @@
+services:
+  application:
+    image: python:3.12-slim
+    container_name: application
+    hostname: application
+    volumes:
+      - ./python:/app
+    tty: true
+    ports:
+      - "8000:8000"
+    networks:
+      - docker_network
+
+networks:
+  docker_network:
+    driver: bridge
+    
